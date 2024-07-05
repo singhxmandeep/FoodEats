@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import "./Cart.css";
 import { StoreContext } from "../../Context/StoreContext";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { cartItems, food_list, removeFromCart, getTotalCartAmount } = useContext(StoreContext);
@@ -8,6 +9,8 @@ const Cart = () => {
   const getCartItems = () => {
     return food_list.filter(item => cartItems[item._id] > 0);
   };
+
+  const navigate = useNavigate();
 
   return (
     <div className="cart">
@@ -22,12 +25,12 @@ const Cart = () => {
         </div>
         <br />
         <hr />
-        {getCartItems().map((item, index) => (
+        {getCartItems().map((item) => (
           <React.Fragment key={item._id}>
             <div className="cart-items-item">
               <img src={item.image} alt={item.name} />
               <p>{item.name}</p>
-              <p>${item.price}</p>
+              <p>${item.price.toFixed(2)}</p>
               <p>{cartItems[item._id]}</p>
               <p>${(item.price * cartItems[item._id]).toFixed(2)}</p>
               <p className="cross" onClick={() => removeFromCart(item._id)}>X</p>
@@ -47,15 +50,15 @@ const Cart = () => {
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>$2.00</p>
+              <p>${getTotalCartAmount() === "0.00" ? "0.00" : "2.00"}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>${(parseFloat(getTotalCartAmount()) + 2).toFixed(2)}</b>            
+              <b>${(parseFloat(getTotalCartAmount()) + (getTotalCartAmount() === "0.00" ? 0 : 2)).toFixed(2)}</b>            
             </div>
           </div>
-          <button>PROCEED TO CHECKOUT</button>
+          <button onClick={() => navigate("/order")}>PROCEED TO CHECKOUT</button>
         </div>
         <div className="cart-promocode">
           <div>
