@@ -1,7 +1,7 @@
 .header{
     height: 34vw;
     margin: 30px auto;
-    background: url("./header_img.png" ) no-repeat;
+    background: url("https://github.com/singhxmandeep/FoodEats/blob/main/frontend/public/header_img.png?raw=true" ) no-repeat;
     background-size: contain;
     position: relative;
 }
