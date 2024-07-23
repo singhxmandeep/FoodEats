@@ -1,20 +1,24 @@
-.explore-menu{
+.explore-menu {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.explore-menu h1{
+.explore-menu h1 {
     color: #262626;
     font-weight: 500;
+    text-align: center; /* Center the heading */
 }
 
-.explore-menu-text{
+.explore-menu-text {
     max-width: 60%;
     color: #808080;
+    font-size: 1.2em; /* Increase the font size */
+    text-align: justify; /* Justify the text for equal margins */
+    margin: 0 auto; /* Center the paragraph container */
 }
 
-.explore-menu-list{
+.explore-menu-list {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,11 +28,11 @@
     overflow-x: scroll;
 }
 
-.explore-menu-list::-webkit-scrollbar{
+.explore-menu-list::-webkit-scrollbar {
     display: none;
 }
 
-.explore-menu-list-item img{
+.explore-menu-list-item img {
     width: 8vw;
     min-width: 80px;
     cursor: pointer;
@@ -36,30 +40,34 @@
     transition: 0.2s;
 }
 
-.explore-menu-list-item p{
+.explore-menu-list-item p {
     margin-top: 10px;
     color: #707070;
     font-size: max(1.4vw, 16px);
     cursor: pointer;
 }
 
-.explore-menu hr{
+.explore-menu hr {
     margin: 10px 0px;
     height: 2px;
     background-color: #e2e2e2;
     border: none;
 }
 
-.explore-menu-list-item .active{
+.explore-menu-list-item .active {
     border: 4px solid tomato;
     padding: 3px;
     border-radius: 80px;
 }
 
-@media(max-width: 1050px){
-    .explore-menu{
+@media (max-width: 1050px) {
+    .explore-menu {
         max-width: 100%;
         font-size: 14px;
     }
 
+    .explore-menu-text {
+        font-size: 1em; /* Adjust font size for smaller screens */
+        max-width: 90%; /* Adjust max width for smaller screens */
+    }
 }
