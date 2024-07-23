@@ -13,13 +13,14 @@ const Verify = () => {
 
     const verifyPayment = async () => {
         try {
-            const response = await axios.post(`${url}/api/order/verify`, { success, orderId });
-
+            const token = localStorage.getItem('authToken');
+            const response = await axios.post(`${url}/api/order/verify`, { success, orderId }, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+    
             if (response.data.success) {
-                console.log("Payment verified successfully");
                 navigate("/myorders");
             } else {
-                console.log("Payment verification failed");
                 navigate("/");
             }
         } catch (error) {
@@ -27,6 +28,7 @@ const Verify = () => {
             navigate("/");
         }
     };
+    
 
     useEffect(() => {
         verifyPayment();
