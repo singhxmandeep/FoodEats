@@ -50,6 +50,12 @@
     border: none;
 }
 
+.logo{
+    width: 150px;
+    position: relative;
+    right: 20px;
+}
+
 @media(max-width: 750px){
     .footer-content{
         display: flex;
