@@ -13,21 +13,22 @@ const Verify = () => {
 
     const verifyPayment = async () => {
         try {
-            const token = localStorage.getItem('authToken');
-            const response = await axios.post(`${url}/api/order/verify`, { success, orderId }, {
-                headers: { Authorization: `Bearer ${token}` }
-            });
-    
-            if (response.data.success) {
-                navigate("/myorders");
-            } else {
-                navigate("/");
-            }
-        } catch (error) {
-            console.error("Error verifying payment:", error);
+          const token = localStorage.getItem('authToken');
+          const response = await axios.post(`${url}/api/order/verify`, { success, orderId }, {
+            headers: { Authorization: `${token}` }
+          });
+      
+          if (response.data.success) {
+            navigate("/myorders");
+          } else {
             navigate("/");
+          }
+        } catch (error) {
+          console.error("Error verifying payment:", error);
+          navigate("/");
         }
-    };
+      };
+      
     
 
     useEffect(() => {
